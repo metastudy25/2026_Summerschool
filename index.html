@@ -14,6 +14,7 @@
             --text-dark: #212529;
             --text-gray: #666;
         }
+<!DOCTYPE html>
 
         * {
             margin: 0;
@@ -221,7 +222,7 @@
             width: 100%;
             max-width: 800px; /* 구글 폼 가독성을 위해 가로 폭 확대 */
             height: 90vh;
-            overflow: hidden; /* 내부 스크롤은 iframe에서 처리 */
+            overflow-y: auto; /* 긴 양식을 위해 스크롤 허용 */
             border-radius: 24px;
             padding: 0; /* 테두리 여백 제거 */
             position: relative;
@@ -296,6 +297,31 @@
             background-color: var(--primary-color);
             color: #fff;
         }
+
+        /* 모집 요강 스타일 */
+        .guide-table {
+            background: #fff;
+            border: 1px solid #ccd1d9;
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .guide-row {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+        .guide-row:last-child { border-bottom: none; }
+        .guide-label {
+            background: #f8f9fa;
+            width: 150px;
+            padding: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            border-right: 1px solid #eee;
+        }
+        .guide-value { padding: 20px; flex: 1; }
 
         .manage-list {
             display: grid;
@@ -382,6 +408,9 @@
             .modal-content { padding: 30px 20px; }
             .checkbox-grid { grid-template-columns: 1fr; }
             .manage-list { grid-template-columns: 1fr; }
+            .guide-row { flex-direction: column; }
+            .guide-label { width: 100%; border-right: none; border-bottom: 1px solid #eee; padding: 15px 20px; }
+            .guide-value { padding: 15px 20px; }
         }
     </style>
 </head>
@@ -390,8 +419,7 @@
     <header class="hero">
         <div class="container hero-content">
             <p>2026 대입 성공을 위한 마지막 퍼즐</p>
-            <h1>타협 없는 긴장감으로 완성하는<br>파이널 4주, 기적은 시스템이 만듭니다.</h1>
-            <a href="javascript:void(0)" class="cta-button open-modal-btn">사전 예약 문의하기</a>
+            <h1>2026 이든 썸머스쿨!<br>파이널 4주, 기적은 시스템이 만듭니다.</h1>
         </div>
     </header>
 
@@ -401,6 +429,40 @@
             <div class="problem-card">
                 <h2>의지력에 아이의 성적을 맡기시겠습니까?</h2>
                 <p style="margin-top:20px; color:#555;">무더위와 누적된 피로로 생활 리듬이 붕괴되는 여름방학,<br>흔들리는 정신력을 잡아줄 강력한 통제 시스템이 필요할 때입니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 모집 요강 섹션 -->
+    <section style="background-color: #fff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>모집 요강</h2>
+            </div>
+            <div class="guide-table">
+                <div class="guide-row">
+                    <div class="guide-label">모집 기간</div>
+                    <div class="guide-value">2026.05.26(목) ~ 선착순 마감</div>
+                </div>
+                <div class="guide-row">
+                    <div class="guide-label">입학일</div>
+                    <div class="guide-value">각 학교 방학일로부터 2일 이내</div>
+                </div>
+                <div class="guide-row">
+                    <div class="guide-label">모집 대상</div>
+                    <div class="guide-value">고1 · 고2 · 고3 · N수생</div>
+                </div>
+                <div class="guide-row">
+                    <div class="guide-label">개강</div>
+                    <div class="guide-value">7월 순차 개강</div>
+                </div>
+                <div class="guide-row">
+                    <div class="guide-label">접수</div>
+                    <div class="guide-value">현장 방문 접수 또는 온라인 신청서 접수</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="javascript:void(0)" class="cta-button open-modal-btn">사전 예약 문의하기</a>
             </div>
         </div>
     </section>
@@ -539,15 +601,171 @@
     <div id="applyModal" class="modal">
         <div class="modal-content">
             <div class="close-modal">&times;</div>
-            <!-- Google Forms Embed -->
-            <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSeRr2HnMWrexICtDV6yitoEQUxrt1pcLCmtiTZpJmKGkk5a0w/viewform?embedded=true" 
-                width="100%" 
-                height="100%" 
-                frameborder="0" 
-                marginheight="0" 
-                marginwidth="0"
-                style="border-radius: 24px;">로드 중…</iframe>
+<div class="registration-container" style="max-width: 650px; margin: 0 auto; padding: 40px 20px; background-color: #fff;">
+    <h3 style="text-align: center; color: #333; margin-top: 0;">2026 썸머스쿨 사전 예약</h3>
+    <form id="summer-school-form">
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">학생 또는 학부모 이름</label>
+            <input type="text" name="name" required style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="이름을 입력하세요">
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">연락처</label>
+            <input type="tel" name="phone" required style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="010-0000-0000">
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">학년 선택</label>
+            <select name="grade" required style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+                <option value="">학년을 선택하세요</option>
+                <option value="중1">중학교 1학년</option>
+                <option value="중2">중학교 2학년</option>
+                <option value="중3">중학교 3학년</option>
+                <option value="고1">고등학교 1학년</option>
+                <option value="고2">고등학교 2학년</option>
+                <option value="고3/N수">고등학교 3학년 / N수생</option>
+            </select>
+        </div>
+
+        <!-- 집중 과목 선택 -->
+        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+            <label style="display: block; margin-bottom: 10px; font-weight: bold; color: var(--primary-color);">이번 여름방학에 가장 집중하고 싶은 과목 (다중 선택 가능)</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <label><input type="checkbox" name="focus_subject" value="국어"> 국어</label>
+                <label><input type="checkbox" name="focus_subject" value="수학"> 수학</label>
+                <label><input type="checkbox" name="focus_subject" value="영어"> 영어</label>
+                <label><input type="checkbox" name="focus_subject" value="탐구"> 탐구</label>
+                <label><input type="checkbox" name="focus_subject" value="한국사"> 한국사</label>
+                <label><input type="checkbox" name="focus_subject" value="자기주도학습"> 자기주도학습 습관 형성</label>
+            </div>
+        </div>
+
+        <!-- 학습 개선점 -->
+        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+            <label style="display: block; margin-bottom: 10px; font-weight: bold; color: var(--primary-color);">현재 학생이 학습에서 가장 개선하고 싶은 점은 무엇인가요? (복수 선택 가능)</label>
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
+                <label><input type="checkbox" name="improvement" value="엉덩이 힘"> 엉덩이 힘 부족 (집중력 부족)</label>
+                <label><input type="checkbox" name="improvement" value="스마트폰"> 스마트폰/미디어 유혹</label>
+                <label><input type="checkbox" name="improvement" value="실천력"> 작심삼일 계획 (낮은 실천율)</label>
+                <label><input type="checkbox" name="improvement" value="공부방법"> 효율적인 공부 방법 부재</label>
+                <label><input type="checkbox" name="improvement" value="생활패턴"> 방학 증후군 (생활 패턴 붕괴)</label>
+                <label><input type="checkbox" name="improvement" value="동기부여"> 동기 부족 (불분명한 목표)</label>
+                <label><input type="checkbox" name="improvement" value="시험불안"> 시험 불안/과도한 스트레스</label>
+            </div>
+        </div>
+
+        <!-- 과목별 애로사항: 영어 (박스 처리) -->
+        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px; border: 1px solid #eee;">
+            <label style="display: block; margin-bottom: 10px; font-weight: bold; border-left: 4px solid var(--accent-color); padding-left: 10px;">[영어] 바로잡고 싶은 부분 *</label>
+            <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; color: #555;">
+                <label><input type="checkbox" name="english_issue" value="어휘력"> 어휘력 부족 (암기 기피)</label>
+                <label><input type="checkbox" name="english_issue" value="문법"> 문법 개념 미비 (구조 분석 불가)</label>
+                <label><input type="checkbox" name="english_issue" value="속도/문해력"> 독해 속도 및 문해력 부족</label>
+                <label><input type="checkbox" name="english_issue" value="서술형"> 서술형/내신 주관식 대비 불안</label>
+            </div>
+        </div>
+
+        <!-- 과목별 애로사항: 수학 (박스 처리) -->
+        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px; border: 1px solid #eee;">
+            <label style="display: block; margin-bottom: 10px; font-weight: bold; border-left: 4px solid var(--accent-color); padding-left: 10px;">[수학] 바로잡고 싶은 부분 *</label>
+            <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; color: #555;">
+                <label><input type="checkbox" name="math_issue" value="눈팅학습"> '눈팅' 학습 (개념-적용 괴리)</label>
+                <label><input type="checkbox" name="math_issue" value="심화기피"> 심화/킬러 문항 기피</label>
+                <label><input type="checkbox" name="math_issue" value="연산실수"> 고질적인 연산/풀이 실수</label>
+                <label><input type="checkbox" name="math_issue" value="오답관리"> 형식적인 오답 관리</label>
+                <label><input type="checkbox" name="math_issue" value="기초결손"> 이전 과정의 구멍 (결손)</label>
+                <label><input type="checkbox" name="math_issue" value="진도불안"> 진도 강박과 막연한 불안</label>
+            </div>
+        </div>
+
+        <!-- 과목별 애로사항: 국어/탐구/밸런스 -->
+        <div style="margin-bottom: 25px;">
+            <label style="display: block; margin-bottom: 10px; font-weight: bold; border-left: 4px solid var(--accent-color); padding-left: 10px;">[국어·탐구·학습밸런스] 바로잡고 싶은 부분</label>
+            <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; color: #555;">
+                <label><input type="checkbox" name="general_issue" value="국어문해력"> 국어 문해력 및 시간 부족</label>
+                <label><input type="checkbox" name="general_issue" value="탐구방치"> 탐구 과목(사탐/과탐) 방치</label>
+                <label><input type="checkbox" name="general_issue" value="밸런스붕괴"> 주객전도형 학습 (밸런스 붕괴)</label>
+                <label><input type="checkbox" name="general_issue" value="양치기"> 깊이 없는 양치기식 공부</label>
+            </div>
+        </div>
+
+        <!-- 상담 예약 날짜 및 시간 -->
+        <div style="margin-bottom: 25px; border: 1px solid #eee; padding: 20px; border-radius: 12px;">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">방문 상담 희망 날짜</label>
+                <input type="date" name="consult_date" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">방문 상담 시간</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
+                        <input type="radio" name="consult_time" value="10:00" required> 10:00
+                    </label>
+                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
+                        <input type="radio" name="consult_time" value="11:00"> 11:00
+                    </label>
+                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
+                        <input type="radio" name="consult_time" value="13:30"> 13:30
+                    </label>
+                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
+                        <input type="radio" name="consult_time" value="14:30"> 14:30
+                    </label>
+                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
+                        <input type="radio" name="consult_time" value="20:00"> 20:00
+                    </label>
+                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
+                        <input type="radio" name="consult_time" value="21:00"> 21:00
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">문의 및 건의사항 (추가 고민사항)</label>
+            <textarea name="message" rows="4" style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="기타 궁금하신 점이나 학생의 특이사항을 자유롭게 적어주세요."></textarea>
+        </div>
+
+        <!-- 개인정보 동의 -->
+        <div style="margin-bottom: 25px; font-size: 0.85rem; color: #666; border-top: 1px solid #eee; pt: 15px;">
+            <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+                <input type="checkbox" name="privacy_agree" required style="margin-top: 3px;">
+                <span>[필수] 개인정보 수집 및 이용에 동의합니다. (상담 예약 및 학원 안내 서비스 제공 목적)</span>
+            </label>
+        </div>
+
+        <button type="submit" id="submit-btn" style="width: 100%; padding: 18px; background-color: var(--primary-color); color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; transition: background 0.3s;">사전 예약 신청하기</button>
+        
+        <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 15px;">
+            신청 후 담당 선생님이 순차적으로 확인 전화를 드립니다.
+        </p>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById('summer-school-form');
+    
+    // ⚠️ 매우 중요: 아래 "" 사이에 3단계에서 만들 '구글 웹 앱 URL'을 나중에 꼭 넣어야 합니다!
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwbmCB9KnEq1preR_Yd9pzhzy2Qria6JX8f2aeIOfu6LL-vPkrwDdt9kh4EutjbyGi0Mw/exec";
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        btn.disabled = true;
+        btn.innerText = "제출 중입니다...";
+
+        fetch(scriptURL, { method: 'POST', body: new URLSearchParams(new FormData(form)) })
+            .then(response => {
+                alert('사전 예약이 성공적으로 접수되었습니다. 감사합니다!');
+                form.reset(); 
+                btn.disabled = false;
+                btn.innerText = "신청서 제출하기";
+            })
+            .catch(error => {
+                alert('전송 중 오류가 발생했습니다. 다시 시도해 주세요.');
+                console.error('Error!', error.message);
+                btn.disabled = false;
+                btn.innerText = "신청서 제출하기";
+            });
+    });
+</script>
         </div>
     </div>
 
