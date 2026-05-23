@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 이든관리형학습센터 썸머스쿨 | 타협 없는 4주의 기적</title>
+    <!-- Pretendard 폰트 불러오기 (아임웹 표준 폰트) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <style>
+        :root {
+            --primary-color: #1a237e; /* 신뢰감을 주는 네이비 */
+            --accent-color: #d32f2f;  /* 긴장감을 주는 레드 */
+            --bg-light: #f8f9fa;
+            --text-dark: #212529;
+            --text-gray: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+            word-break: keep-all;
+        }
+
+        /* 공통 레이아웃 */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1920&q=80'); /* 학업 분위기 배경 */
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 문제 제기 섹션 */
+        .problem-shame {
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .problem-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: -120px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 시그니처 시스템 */
+        .signature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .sig-item {
+            padding: 40px;
+            border-radius: 20px;
+            background: #eef1f8; /* 배경 대비 선명도 강화 */
+            border: 1px solid #d1d9e6; /* 박스 선 정의 */
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .sig-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* 8대 시리즈 그리드 */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .pillar-card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccd1d9; /* 선명도 20% 향상 (기존 #eee 대비) */
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: #fff;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 박스 입체감 강화 */
+        }
+
+        .pillar-card:hover {
+            border-color: var(--primary-color);
+            background-color: #f8f9ff;
+        }
+
+        .pillar-card.active {
+            background-color: var(--primary-color);
+            color: #fff !important;
+        }
+
+        .pillar-card span {
+            display: block;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .pillar-card strong {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .pillar-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .pillar-card.active .pillar-content {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 15px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* 입학 신청 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #fff;
+            width: 100%;
+            max-width: 800px; /* 구글 폼 가독성을 위해 가로 폭 확대 */
+            height: 90vh;
+            overflow: hidden; /* 내부 스크롤은 iframe에서 처리 */
+            border-radius: 24px;
+            padding: 0; /* 테두리 여백 제거 */
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: modalSlideUp 0.3s ease-out;
+        }
+
+        @keyframes modalSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: fixed;
+            right: 30px;
+            top: 25px;
+            font-size: 35px;
+            color: #333;
+            cursor: pointer;
+            z-index: 2001;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .close-modal:hover { color: #333; }
+
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; color: #333; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #f9f9f9;
+            transition: all 0.2s;
+        }
+        .form-group input:focus { border-color: var(--primary-color); background: #fff; outline: none; }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            background: #f5f6f7;
+            padding: 15px;
+            border-radius: 12px;
+        }
+        .checkbox-item { display: flex; align-items: center; font-size: 0.9rem; cursor: pointer; }
+        .checkbox-item input { width: auto; margin-right: 10px; }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* 생활 관리 섹션 */
+        .management {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .manage-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            list-style: none;
+        }
+
+        .manage-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .manage-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .manage-item.active {
+            background: #fff;
+            color: var(--primary-color) !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .manage-item strong {
+            display: block;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .manage-item span {
+            display: block;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s;
+        }
+
+        .manage-item.active span {
+            color: #666;
+        }
+
+        .manage-detail {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .manage-item.active .manage-detail {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* 푸터 및 하단 배너 */
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        /* 반응형 대응 */
+        @media (max-width: 768px) {
+            .signature-grid { grid-template-columns: 1fr; }
+            .section-title h2 { font-size: 1.8rem; }
+            section { padding: 50px 0; }
+            .pillar-card { padding: 20px; }
+            .modal-content { padding: 30px 20px; }
+            .checkbox-grid { grid-template-columns: 1fr; }
+            .manage-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 히어로 섹션 -->
+    <header class="hero">
+        <div class="container hero-content">
+            <p>2026 대입 성공을 위한 마지막 퍼즐</p>
+            <h1>타협 없는 긴장감으로 완성하는<br>파이널 4주, 기적은 시스템이 만듭니다.</h1>
+            <a href="javascript:void(0)" class="cta-button open-modal-btn">사전 예약 문의하기</a>
+        </div>
+    </header>
+
+    <!-- 문제 제기 섹션 -->
+    <section class="problem-shame">
+        <div class="container">
+            <div class="problem-card">
+                <h2>의지력에 아이의 성적을 맡기시겠습니까?</h2>
+                <p style="margin-top:20px; color:#555;">무더위와 누적된 피로로 생활 리듬이 붕괴되는 여름방학,<br>흔들리는 정신력을 잡아줄 강력한 통제 시스템이 필요할 때입니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 시그니처 섹션 -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>EDEN SIGNATURE</h2>
+                <p>단순 자습을 넘어 사고의 과정을 교정합니다.</p>
+            </div>
+            <div class="signature-grid">
+                <div class="sig-item">
+                    <h3>메타PRO 분석</h3>
+                    <p style="margin-bottom: 10px;"><strong>"데이터는 거짓말을 하지 않습니다. 숨은 점수를 찾아냅니다."</strong></p>
+                    <p>
+                        모의고사 문제 풀이 습관, 무의식적인 인지 오류, 심리적 흔들림까지 정밀 추적하는 이든만의 독보적인 진단 시스템입니다.<br><br>
+                        <strong style="color: var(--primary-color);">'앎의 착각'을 깨부수는 정밀 인지 해부</strong><br>
+                        운 좋게 맞춘 문제 뒤에 숨은 거품을 완벽히 제거합니다. 아는 것과 모르는 것을 완벽하게 분리하는 메타인지 추적 기술을 통해, 성적 정체의 진짜 원인을 명확하게 규명합니다.
+                    </p>
+                </div>
+                <div class="sig-item">
+                    <h3>1:1 인출확인 PT</h3>
+                    <p style="margin-bottom: 15px;"><strong>"말로 명확히 설명하지 못하면 결코 아는 것이 아닙니다."</strong></p>
+                    <p>
+                        <strong style="color: var(--primary-color);">골든타임을 사수하는 5분 능동 인출 (EDEN_CUE)</strong><br>
+                        강의나 자습이 끝난 직후 단 5분, 배운 핵심 내용을 백지에 스스로 요약하고 구조화합니다. 눈으로만 읽고 넘어가는 휘발성 학습을 막고, 뇌를 자극해 개념을 직접 끄집어내는 훈련을 선행합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8대 시리즈 섹션 -->
+    <section style="background-color: #fcfcfc;">
+        <div class="container">
+            <div class="section-title">
+                <h2>학습관리 시스템</h2>
+                <p style="font-weight: 700; color: var(--primary-color); margin-bottom: 15px;">빈틈없는 성적 향상 파이프라인, EDEN 시리즈</p>
+                <p style="max-width: 850px; margin: 0 auto; font-size: 1.05rem; color: #444; line-height: 1.7;">단순한 관리를 넘어, 실제 성적 향상을 강제하는 9단계의 압도적 커리큘럼. 메타인지와 AI 빅데이터 기술이 결합된 이든만의 'EDEN 시리즈'가 2026년 대입의 완벽한 결과를 만듭니다.</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card" onclick="this.classList.toggle('active')">
+                    <span>01. PDS 플래너</span>
+                    <strong>계획-실행-피드백 점검</strong>
+                    <p class="pillar-content">단순한 기록을 넘어 실행력을 극대화합니다. 월간 계획, 주간 계획후, 매일 실행 여부를 점검하며 스스로의 학습 패턴을 완벽히 장악합니다.</p>
+                </div>
+                <div class="pillar-card" onclick="this.classList.toggle('active')">
+                    <span>02. EDEN_VOC</span>
+                    <strong>4배 빠른 단어암기</strong>
+                    <p class="pillar-content">수능 필수 어휘부터 고난도 단어까지 매일 80개 암기를 원칙으로 합니다. 메타인지를 이용한 테스트, 장기기억에 최적화된 단어암기법입니다.</p>
+                </div>
+                <div class="pillar-card" onclick="this.classList.toggle('active')">
+                    <span>03. 국어 필수 어휘</span>
+                    <strong>고전/문법 개념어 정리</strong>
+                    <p class="pillar-content">문해력의 기초인 필수 어휘를 정복합니다. 특히 학생층이 어려워하는 고전 시가 필수 단어와 문법 핵심 개념을 체계적으로 내재화합니다.</p>
+                </div>
+                <div class="pillar-card" onclick="this.classList.toggle('active')">
+                    <span>04. EDEN_CUE</span>
+                    <strong>5분 인출 시스템</strong>
+                    <p class="pillar-content">강의를 들은 직후, 아무것도 보지 않고 핵심 내용을 인출하는 훈련을 합니다. 5분의 투자가 단기 기억을 장기 기억으로 즉각 전환시킵니다.</p>
+                </div>
+                <div class="pillar-card" onclick="this.classList.toggle('active')">
+                    <span>05. EDEN_GO</span>
+                    <strong>AI 질의응답 및 사고 교정</strong>
+                    <p class="pillar-content">20년간 기출 100% 분석자료를 기초로 AI와 멘토가 학생의 풀이 과정을 역추적하여 잘못된 사고의 뿌리를 찾아 교정해 드립니다.</p>
+                </div>
+                <div class="pillar-card" onclick="this.classList.toggle('active')">
+                    <span>06. EDEN_KEY</span>
+                    <strong>오답 기반 약점 핀셋 타격</strong>
+                    <p class="pillar-content">매주 누적된 오답 데이터를 분석하여 학생별 취약 유형만을 추출합니다. 개인별 맞춤형 유사 문항 제공을 통해 약점을 확실한 강점으로 바꿉니다.</p>
+                </div>
+                <div class="pillar-card" onclick="this.classList.toggle('active')">
+                    <span>07. EDEN_SYNC</span>
+                    <strong>과거의 기출과 현재의 EBS를 잇는 가장 완벽한 주파수</strong>
+                    <p class="pillar-content">최근 20년간 누적된 수능·학평·도교육청 기출문제와 올해의 EBS 수능특강 의 방대한 데이터를 학생들이 학습하도록 프로그램</p>
+                </div>
+                <div class="pillar-card" onclick="this.classList.toggle('active')">
+                    <span>08. EDEN_MAP</span>
+                    <strong>1:1 맞춤 진로진학 컨설팅</strong>
+                    <p class="pillar-content">입시 전문 소장이 학생의 생기부와 성적 추이를 정밀 분석합니다. 2026 대입 성공을 위한 가장 확실한 수시/정시 합격 로드맵을 설계합니다.</p>
+                </div>
+                <div class="pillar-card" onclick="this.classList.toggle('active')">
+                    <span>09. EDEN_REAL</span>
+                    <strong>이감 모의고사 실전 훈련</strong>
+                    <p class="pillar-content">대치동 1타 '이감 모의고사'를 도입합니다. 수능과 동일한 타종 시스템과 소음, 환경 속에서 실전보다 더 실전 같은 훈련을 반복합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 생활 관리 섹션 -->
+    <section class="management">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: #fff;">완벽한 통제, 몰입의 환경</h2>
+                <p style="color: rgba(255,255,255,0.7);">느슨해진 여름을 수능 시계로 동기화합니다.</p>
+            </div>
+            <div class="manage-list">
+                <div class="manage-item" onclick="this.classList.toggle('active')">
+                    <strong>01. 08:00 의무 등원제</strong>
+                    <span>시스템 개요: 재수생 매일 8시 정각 의무 등원</span>
+                    <p class="manage-detail">수능 1교시를 위한 뇌를 깨우는 시간. 수능 시계에 맞춰 가장 먼저 시작하며, 지각 시 엄격한 벌점이 부과됩니다.</p>
+                </div>
+                <div class="manage-item" onclick="this.classList.toggle('active')">
+                    <strong>02. 수능형 교시제</strong>
+                    <span>시스템 개요: 실제 수능 시간표와 동일한 타종 시스템 운영</span>
+                    <p class="manage-detail">실전과 100% 동일한 생체 리듬 동기화. 교시 중 무단 출입을 통제하여 고도의 집중력을 훈련합니다.</p>
+                </div>
+                <div class="manage-item" onclick="this.classList.toggle('active')">
+                    <strong>03. Digital Detox Zone</strong>
+                    <span>시스템 개요: 등원 시 스마트폰 제출 및 학습용 태블릿 MDM 제어</span>
+                    <p class="manage-detail">유튜브, 웹서핑, 게임 등 학습 외 사이트 접속을 원천 차단하여 오직 인강 시청에만 몰입하도록 통제합니다.</p>
+                </div>
+                <div class="manage-item" onclick="this.classList.toggle('active')">
+                    <strong>04. 3중 밀착 순찰 및 벌점제</strong>
+                    <span>시스템 개요: 상시 순찰 모니터링 및 벌점 누적 시 강제 퇴원</span>
+                    <p class="manage-detail">졸음, 딴짓, 친목 행위 등 면학 분위기를 저해하는 요소에 대해 무관용 원칙을 적용하여 최상의 환경을 유지합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="container">
+            <h2>지금 바로, 기적을 예약하세요.</h2>
+            <p>한정된 좌석으로 조기 마감이 예상됩니다.</p>
+            <a href="javascript:void(0)" class="cta-button open-modal-btn" style="margin: 20px 0;">사전 예약 문의하기</a>
+            <p>미사강변대로 80, 그린프라자 7층 이든관리형학습센터</p>
+            <p style="margin-top: 30px; font-size: 0.8rem; color: #888;">&copy; 2026 미사이든학원. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 입학 신청 팝업 모달 -->
+    <div id="applyModal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal">&times;</div>
+            <!-- Google Forms Embed -->
+            <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSeRr2HnMWrexICtDV6yitoEQUxrt1pcLCmtiTZpJmKGkk5a0w/viewform?embedded=true" 
+                width="100%" 
+                height="100%" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0"
+                style="border-radius: 24px;">로드 중…</iframe>
+        </div>
+    </div>
+
+    <script>
+        // 모달 제어 스크립트
+        const modal = document.getElementById('applyModal');
+        const openBtns = document.querySelectorAll('.open-modal-btn');
+        const closeBtn = document.querySelector('.close-modal');
+
+        // 모든 '사전 예약 문의하기' 버튼에 클릭 이벤트 추가
+        openBtns.forEach(btn => {
+            btn.onclick = () => modal.classList.add('active');
+        });
+
+        // 닫기 버튼 클릭 시
+        closeBtn.onclick = () => modal.classList.remove('active');
+        
+        // 모달 바깥 영역 클릭 시 닫기
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
