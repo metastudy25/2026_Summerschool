@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 이든관리형학습센터 썸머스쿨 | 타협 없는 4주의 기적</title>
-    <!-- Pretendard 폰트 불러오기 (아임웹 표준 폰트) -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <style>
         :root {
-            --primary-color: #1a237e; /* 신뢰감을 주는 네이비 */
-            --accent-color: #d32f2f;  /* 긴장감을 주는 레드 */
+            --primary-color: #1a237e;
+            --accent-color: #d32f2f;
             --bg-light: #f8f9fa;
             --text-dark: #212529;
             --text-gray: #666;
         }
-<!DOCTYPE html>
 
         * {
             margin: 0;
@@ -30,7 +28,6 @@
             word-break: keep-all;
         }
 
-        /* 공통 레이아웃 */
         .container {
             width: 100%;
             max-width: 1100px;
@@ -59,9 +56,8 @@
             color: var(--text-gray);
         }
 
-        /* 히어로 섹션 */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1920&q=80'); /* 학업 분위기 배경 */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             height: 80vh;
@@ -101,7 +97,6 @@
             transform: translateY(-5px);
         }
 
-        /* 문제 제기 섹션 */
         .problem-shame {
             background-color: var(--bg-light);
             text-align: center;
@@ -117,7 +112,15 @@
             z-index: 10;
         }
 
-        /* 시그니처 시스템 */
+        .problem-quote {
+            margin-top: 30px;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 900;
+            color: var(--accent-color);
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+
         .signature-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -127,8 +130,8 @@
         .sig-item {
             padding: 40px;
             border-radius: 20px;
-            background: #eef1f8; /* 배경 대비 선명도 강화 */
-            border: 1px solid #d1d9e6; /* 박스 선 정의 */
+            background: #eef1f8;
+            border: 1px solid #d1d9e6;
             border-left: 5px solid var(--primary-color);
         }
 
@@ -138,7 +141,6 @@
             color: var(--primary-color);
         }
 
-        /* 8대 시리즈 그리드 */
         .pillars-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -148,14 +150,14 @@
         .pillar-card {
             display: flex;
             flex-direction: column;
-            border: 1px solid #ccd1d9; /* 선명도 20% 향상 (기존 #eee 대비) */
+            border: 1px solid #ccd1d9;
             padding: 25px;
             border-radius: 15px;
             transition: all 0.3s;
             cursor: pointer;
             background: #fff;
             text-align: left;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 박스 입체감 강화 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .pillar-card:hover {
@@ -197,7 +199,6 @@
             color: rgba(255,255,255,0.9);
         }
 
-        /* 입학 신청 모달 스타일 */
         .modal {
             display: none;
             position: fixed;
@@ -220,11 +221,11 @@
         .modal-content {
             background: #fff;
             width: 100%;
-            max-width: 800px; /* 구글 폼 가독성을 위해 가로 폭 확대 */
+            max-width: 800px;
             height: 90vh;
-            overflow-y: auto; /* 긴 양식을 위해 스크롤 허용 */
+            overflow-y: auto;
             border-radius: 24px;
-            padding: 0; /* 테두리 여백 제거 */
+            padding: 0;
             position: relative;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             animation: modalSlideUp 0.3s ease-out;
@@ -255,50 +256,11 @@
 
         .close-modal:hover { color: #333; }
 
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; color: #333; }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            font-size: 1rem;
-            background: #f9f9f9;
-            transition: all 0.2s;
-        }
-        .form-group input:focus { border-color: var(--primary-color); background: #fff; outline: none; }
-
-        .checkbox-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            background: #f5f6f7;
-            padding: 15px;
-            border-radius: 12px;
-        }
-        .checkbox-item { display: flex; align-items: center; font-size: 0.9rem; cursor: pointer; }
-        .checkbox-item input { width: auto; margin-right: 10px; }
-
-        .submit-btn {
-            width: 100%;
-            background: var(--primary-color);
-            color: #fff;
-            padding: 18px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        /* 생활 관리 섹션 */
         .management {
             background-color: var(--primary-color);
             color: #fff;
         }
 
-        /* 모집 요강 스타일 */
         .guide-table {
             background: #fff;
             border: 1px solid #ccd1d9;
@@ -385,7 +347,6 @@
             border-top: 1px solid rgba(0,0,0,0.1);
         }
 
-        /* 푸터 및 하단 배너 */
         footer {
             background: #222;
             color: #fff;
@@ -399,14 +360,12 @@
             margin: 20px 0;
         }
 
-        /* 반응형 대응 */
         @media (max-width: 768px) {
             .signature-grid { grid-template-columns: 1fr; }
             .section-title h2 { font-size: 1.8rem; }
             section { padding: 50px 0; }
             .pillar-card { padding: 20px; }
             .modal-content { padding: 30px 20px; }
-            .checkbox-grid { grid-template-columns: 1fr; }
             .manage-list { grid-template-columns: 1fr; }
             .guide-row { flex-direction: column; }
             .guide-label { width: 100%; border-right: none; border-bottom: 1px solid #eee; padding: 15px 20px; }
@@ -415,7 +374,6 @@
     </style>
 </head>
 <body>
-    <!-- 히어로 섹션 -->
     <header class="hero">
         <div class="container hero-content">
             <p>2026 대입 성공을 위한 마지막 퍼즐</p>
@@ -423,17 +381,16 @@
         </div>
     </header>
 
-    <!-- 문제 제기 섹션 -->
     <section class="problem-shame">
         <div class="container">
             <div class="problem-card">
                 <h2>의지력에 아이의 성적을 맡기시겠습니까?</h2>
                 <p style="margin-top:20px; color:#555;">무더위와 누적된 피로로 생활 리듬이 붕괴되는 여름방학,<br>흔들리는 정신력을 잡아줄 강력한 통제 시스템이 필요할 때입니다.</p>
+                <p class="problem-quote">"내일부터 해야지 30번 외치니<br>여름방학이 다 갔다"</p>
             </div>
         </div>
     </section>
 
-    <!-- 모집 요강 섹션 -->
     <section style="background-color: #fff;">
         <div class="container">
             <div class="section-title">
@@ -442,7 +399,7 @@
             <div class="guide-table">
                 <div class="guide-row">
                     <div class="guide-label">모집 기간</div>
-                    <div class="guide-value">2026.05.26(목) ~ 선착순 마감</div>
+                    <div class="guide-value">선착순 마감</div>
                 </div>
                 <div class="guide-row">
                     <div class="guide-label">입학일</div>
@@ -454,7 +411,7 @@
                 </div>
                 <div class="guide-row">
                     <div class="guide-label">개강</div>
-                    <div class="guide-value">7월 순차 개강</div>
+                    <div class="guide-value">학교 방학일에 맞춰 7월 순차 개강</div>
                 </div>
                 <div class="guide-row">
                     <div class="guide-label">접수</div>
@@ -467,7 +424,6 @@
         </div>
     </section>
 
-    <!-- 시그니처 섹션 -->
     <section>
         <div class="container">
             <div class="section-title">
@@ -517,7 +473,6 @@
         </div>
     </section>
 
-    <!-- 8대 시리즈 섹션 -->
     <section style="background-color: #fcfcfc;">
         <div class="container">
             <div class="section-title">
@@ -529,7 +484,7 @@
                 <div class="pillar-card" onclick="this.classList.toggle('active')">
                     <span>01. PDS 플래너</span>
                     <strong>계획-실행-피드백 점검</strong>
-                    <p class="pillar-content">단순한 기록을 넘어 실행력을 극대화합니다. 월간 계획, 주간 계획후, 매일 실행 여부를 점검하며 스스로의 학습 패턴을 완벽히 장악합니다.</p>
+                    <p class="pillar-content">단순한 기록을 넘어 실행력을 극대화합니다. 월간 계획, 주간 계획 후, 매일 실행 여부를 점검하며 스스로의 학습 패턴을 완벽히 장악합니다.</p>
                 </div>
                 <div class="pillar-card" onclick="this.classList.toggle('active')">
                     <span>02. EDEN_VOC</span>
@@ -559,12 +514,12 @@
                 <div class="pillar-card" onclick="this.classList.toggle('active')">
                     <span>07. EDEN_SYNC</span>
                     <strong>과거의 기출과 현재의 EBS를 잇는 가장 완벽한 주파수</strong>
-                    <p class="pillar-content">최근 20년간 누적된 수능·학평·도교육청 기출문제와 올해의 EBS 수능특강 의 방대한 데이터를 학생들이 학습하도록 프로그램</p>
+                    <p class="pillar-content">최근 20년간 누적된 수능·학평·도교육청 기출문제와 올해의 EBS 수능특강의 방대한 데이터를 학생들이 학습하도록 프로그램합니다.</p>
                 </div>
                 <div class="pillar-card" onclick="this.classList.toggle('active')">
                     <span>08. EDEN_MAP</span>
                     <strong>1:1 맞춤 진로진학 컨설팅</strong>
-                    <p class="pillar-content">입시 전문 소장이 학생의 생기부와 성적 추이를 정밀 분석합니다. 2026 대입 성공을 위한 가장 확실한 수시/정시 합격 로드맵을 설계합니다.</p>
+                    <p class="pillar-content">입시 전문 컨설턴트 황붕주 원장이 학생의 생기부와 성적 추이를 정밀 분석합니다. 2026 대입 성공을 위한 가장 확실한 수시/정시 합격 로드맵을 설계합니다.</p>
                 </div>
                 <div class="pillar-card" onclick="this.classList.toggle('active')">
                     <span>09. EDEN_REAL</span>
@@ -575,7 +530,6 @@
         </div>
     </section>
 
-    <!-- 생활 관리 섹션 -->
     <section class="management">
         <div class="container">
             <div class="section-title">
@@ -607,14 +561,13 @@
         </div>
     </section>
 
-    <!-- 푸터 -->
     <footer>
         <div class="container">
             <h2>지금 바로, 기적을 예약하세요.</h2>
             <p>한정된 좌석으로 조기 마감이 예상됩니다.</p>
             <a href="javascript:void(0)" class="cta-button open-modal-btn" style="margin: 20px 0;">사전 예약 문의하기</a>
             <p>미사강변대로 80, 그린프라자 7층 이든관리형학습센터</p>
-            <p style="margin-top: 30px; font-size: 0.8rem; color: #888;">&copy; 2026 미사이든학원. All Rights Reserved.</p>
+            <p style="margin-top: 30px; font-size: 0.8rem; color: #888;">&copy; 2026 이든X학원. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -622,227 +575,239 @@
     <div id="applyModal" class="modal">
         <div class="modal-content">
             <div class="close-modal">&times;</div>
-<div class="registration-container" style="max-width: 650px; margin: 0 auto; padding: 40px 20px; background-color: #fff;">
-    <h3 style="text-align: center; color: #333; margin-top: 0;">2026 썸머스쿨 사전 예약</h3>
-    <form id="summer-school-form">
-        <div style="margin-bottom: 20px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold;">학생 또는 학부모 이름</label>
-            <input type="text" name="name" required style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="이름을 입력하세요">
-        </div>
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold;">연락처</label>
-            <input type="tel" name="phone" required style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="010-0000-0000">
-        </div>
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold;">학년 선택</label>
-            <select name="grade" required style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
-                <option value="">학년을 선택하세요</option>
-                <option value="중1">중학교 1학년</option>
-                <option value="중2">중학교 2학년</option>
-                <option value="중3">중학교 3학년</option>
-                <option value="고1">고등학교 1학년</option>
-                <option value="고2">고등학교 2학년</option>
-                <option value="고3/N수">고등학교 3학년 / N수생</option>
-            </select>
-        </div>
+            <div class="registration-container" style="max-width: 650px; margin: 0 auto; padding: 40px 20px; background-color: #fff;">
+                <h3 style="text-align: center; color: #333; margin-top: 0;">2026 썸머스쿨 사전 예약</h3>
+                <form id="summer-school-form">
 
-        <!-- 집중 과목 선택 -->
-        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
-            <label style="display: block; margin-bottom: 10px; font-weight: bold; color: var(--primary-color);">이번 여름방학에 가장 집중하고 싶은 과목 (다중 선택 가능)</label>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <label><input type="checkbox" name="focus_subject" value="국어"> 국어</label>
-                <label><input type="checkbox" name="focus_subject" value="수학"> 수학</label>
-                <label><input type="checkbox" name="focus_subject" value="영어"> 영어</label>
-                <label><input type="checkbox" name="focus_subject" value="탐구"> 탐구</label>
-                <label><input type="checkbox" name="focus_subject" value="한국사"> 한국사</label>
-                <label><input type="checkbox" name="focus_subject" value="자기주도학습"> 자기주도학습 습관 형성</label>
+                    <!-- 학생 이름 -->
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">학생 이름</label>
+                        <input type="text" name="student_name" required style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="학생 이름을 입력하세요">
+                    </div>
+
+                    <!-- 학교 이름 -->
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">학교 이름</label>
+                        <input type="text" name="school_name" required style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="학교명을 입력하세요 (예: 미사고등학교)">
+                    </div>
+
+                    <!-- 학년 선택 -->
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">학년 선택</label>
+                        <select name="grade" required style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+                            <option value="">학년을 선택하세요</option>
+                            <option value="중1">중학교 1학년</option>
+                            <option value="중2">중학교 2학년</option>
+                            <option value="중3">중학교 3학년</option>
+                            <option value="고1">고등학교 1학년</option>
+                            <option value="고2">고등학교 2학년</option>
+                            <option value="고3/N수">고등학교 3학년 / N수생</option>
+                        </select>
+                    </div>
+
+                    <!-- 연락처 -->
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">학부모 연락처</label>
+                        <input type="tel" name="parent_phone" required style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="010-0000-0000">
+                    </div>
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">학생 연락처</label>
+                        <input type="tel" name="student_phone" style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="010-0000-0000">
+                    </div>
+
+                    <!-- 집중 과목 선택 -->
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: bold; color: var(--primary-color);">이번 여름방학에 가장 집중하고 싶은 과목 (다중 선택 가능)</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <label><input type="checkbox" name="focus_subject" value="국어"> 국어</label>
+                            <label><input type="checkbox" name="focus_subject" value="수학"> 수학</label>
+                            <label><input type="checkbox" name="focus_subject" value="영어"> 영어</label>
+                            <label><input type="checkbox" name="focus_subject" value="탐구"> 탐구</label>
+                            <label><input type="checkbox" name="focus_subject" value="한국사"> 한국사</label>
+                            <label><input type="checkbox" name="focus_subject" value="자기주도학습"> 자기주도학습 습관 형성</label>
+                        </div>
+                    </div>
+
+                    <!-- 학습 개선점 -->
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: bold; color: var(--primary-color);">현재 학생이 학습에서 가장 개선하고 싶은 점은 무엇인가요? (복수 선택 가능)</label>
+                        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
+                            <label><input type="checkbox" name="improvement" value="엉덩이 힘"> 엉덩이 힘 부족 (집중력 부족)</label>
+                            <label><input type="checkbox" name="improvement" value="스마트폰"> 스마트폰/미디어 유혹</label>
+                            <label><input type="checkbox" name="improvement" value="실천력"> 작심삼일 계획 (낮은 실천율)</label>
+                            <label><input type="checkbox" name="improvement" value="공부방법"> 효율적인 공부 방법 부재</label>
+                            <label><input type="checkbox" name="improvement" value="생활패턴"> 방학 증후군 (생활 패턴 붕괴)</label>
+                            <label><input type="checkbox" name="improvement" value="동기부여"> 동기 부족 (불분명한 목표)</label>
+                            <label><input type="checkbox" name="improvement" value="시험불안"> 시험 불안/과도한 스트레스</label>
+                        </div>
+                    </div>
+
+                    <!-- 영어 애로사항 -->
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px; border: 1px solid #eee;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: bold; border-left: 4px solid var(--accent-color); padding-left: 10px;">[영어] 바로잡고 싶은 부분</label>
+                        <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; color: #555;">
+                            <label><input type="checkbox" name="english_issue" value="어휘력"> 어휘력 부족 (암기 기피)</label>
+                            <label><input type="checkbox" name="english_issue" value="문법"> 문법 개념 미비 (구조 분석 불가)</label>
+                            <label><input type="checkbox" name="english_issue" value="속도/문해력"> 독해 속도 및 문해력 부족</label>
+                            <label><input type="checkbox" name="english_issue" value="서술형"> 서술형/내신 주관식 대비 불안</label>
+                        </div>
+                    </div>
+
+                    <!-- 수학 애로사항 -->
+                    <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px; border: 1px solid #eee;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: bold; border-left: 4px solid var(--accent-color); padding-left: 10px;">[수학] 바로잡고 싶은 부분</label>
+                        <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; color: #555;">
+                            <label><input type="checkbox" name="math_issue" value="눈팅학습"> '눈팅' 학습 (개념-적용 괴리)</label>
+                            <label><input type="checkbox" name="math_issue" value="심화기피"> 심화/킬러 문항 기피</label>
+                            <label><input type="checkbox" name="math_issue" value="연산실수"> 고질적인 연산/풀이 실수</label>
+                            <label><input type="checkbox" name="math_issue" value="오답관리"> 형식적인 오답 관리</label>
+                            <label><input type="checkbox" name="math_issue" value="기초결손"> 이전 과정의 구멍 (결손)</label>
+                            <label><input type="checkbox" name="math_issue" value="진도불안"> 진도 강박과 막연한 불안</label>
+                        </div>
+                    </div>
+
+                    <!-- 국어·탐구 -->
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: bold; border-left: 4px solid var(--accent-color); padding-left: 10px;">[국어·탐구·학습밸런스] 바로잡고 싶은 부분</label>
+                        <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; color: #555;">
+                            <label><input type="checkbox" name="general_issue" value="국어문해력"> 국어 문해력 및 시간 부족</label>
+                            <label><input type="checkbox" name="general_issue" value="탐구방치"> 탐구 과목(사탐/과탐) 방치</label>
+                            <label><input type="checkbox" name="general_issue" value="밸런스붕괴"> 주객전도형 학습 (밸런스 붕괴)</label>
+                            <label><input type="checkbox" name="general_issue" value="양치기"> 깊이 없는 양치기식 공부</label>
+                        </div>
+                    </div>
+
+                    <!-- 방문 상담 날짜 및 시간 -->
+                    <div style="margin-bottom: 25px; border: 1px solid #eee; padding: 20px; border-radius: 12px;">
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold;">방문 상담 희망 날짜</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="date" id="consult_date" name="consult_date" required style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" oninput="updateDayOfWeek()">
+                                <span id="day-of-week-display" style="font-weight: 700; color: var(--primary-color); font-size: 1rem; min-width: 60px; text-align: center;"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 8px; font-weight: bold;">방문 상담 시간</label>
+                            <div id="time-slots-weekday">
+                                <p style="font-size: 0.8rem; color: #1a237e; font-weight: 600; margin-bottom: 8px;">주중 (월~금)</p>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;" class="time-grid">
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="10:00"> 10:00</label>
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="11:00"> 11:00</label>
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="13:30"> 13:30</label>
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="14:30"> 14:30</label>
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="20:00"> 20:00</label>
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="21:00"> 21:00</label>
+                                </div>
+                            </div>
+                            <div id="time-slots-saturday" style="display:none;">
+                                <p style="font-size: 0.8rem; color: #1565c0; font-weight: 600; margin-bottom: 8px;">토요일</p>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;" class="time-grid">
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="10:00"> 10:00</label>
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="11:00"> 11:00</label>
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="13:30"> 13:30</label>
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="14:30"> 14:30</label>
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="15:30"> 15:30</label>
+                                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;"><input type="radio" name="consult_time" value="16:30"> 16:30</label>
+                                </div>
+                            </div>
+                            <div id="time-slots-sunday" style="display:none;">
+                                <p style="font-size: 0.85rem; color: var(--accent-color); margin-top: 8px; font-weight: 600;">일요일은 상담이 운영되지 않습니다. 다른 날짜를 선택해 주세요.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 기타 문의 -->
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">문의 및 건의사항 (추가 고민사항)</label>
+                        <textarea name="message" rows="4" style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="기타 궁금하신 점이나 학생의 특이사항을 자유롭게 적어주세요."></textarea>
+                    </div>
+
+                    <!-- 개인정보 동의 -->
+                    <div style="margin-bottom: 25px; font-size: 0.85rem; color: #666; border-top: 1px solid #eee; padding-top: 15px;">
+                        <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+                            <input type="checkbox" name="privacy_agree" required style="margin-top: 3px;">
+                            <span>[필수] 개인정보 수집 및 이용에 동의합니다. (상담 예약 및 학원 안내 서비스 제공 목적)</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submit-btn" style="width: 100%; padding: 18px; background-color: var(--primary-color); color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; transition: background 0.3s;">사전 예약 신청하기</button>
+                    <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 15px;">신청 후 담당 선생님이 순차적으로 확인 전화를 드립니다.</p>
+                </form>
             </div>
-        </div>
-
-        <!-- 학습 개선점 -->
-        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
-            <label style="display: block; margin-bottom: 10px; font-weight: bold; color: var(--primary-color);">현재 학생이 학습에서 가장 개선하고 싶은 점은 무엇인가요? (복수 선택 가능)</label>
-            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
-                <label><input type="checkbox" name="improvement" value="엉덩이 힘"> 엉덩이 힘 부족 (집중력 부족)</label>
-                <label><input type="checkbox" name="improvement" value="스마트폰"> 스마트폰/미디어 유혹</label>
-                <label><input type="checkbox" name="improvement" value="실천력"> 작심삼일 계획 (낮은 실천율)</label>
-                <label><input type="checkbox" name="improvement" value="공부방법"> 효율적인 공부 방법 부재</label>
-                <label><input type="checkbox" name="improvement" value="생활패턴"> 방학 증후군 (생활 패턴 붕괴)</label>
-                <label><input type="checkbox" name="improvement" value="동기부여"> 동기 부족 (불분명한 목표)</label>
-                <label><input type="checkbox" name="improvement" value="시험불안"> 시험 불안/과도한 스트레스</label>
-            </div>
-        </div>
-
-        <!-- 과목별 애로사항: 영어 (박스 처리) -->
-        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px; border: 1px solid #eee;">
-            <label style="display: block; margin-bottom: 10px; font-weight: bold; border-left: 4px solid var(--accent-color); padding-left: 10px;">[영어] 바로잡고 싶은 부분 *</label>
-            <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; color: #555;">
-                <label><input type="checkbox" name="english_issue" value="어휘력"> 어휘력 부족 (암기 기피)</label>
-                <label><input type="checkbox" name="english_issue" value="문법"> 문법 개념 미비 (구조 분석 불가)</label>
-                <label><input type="checkbox" name="english_issue" value="속도/문해력"> 독해 속도 및 문해력 부족</label>
-                <label><input type="checkbox" name="english_issue" value="서술형"> 서술형/내신 주관식 대비 불안</label>
-            </div>
-        </div>
-
-        <!-- 과목별 애로사항: 수학 (박스 처리) -->
-        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 12px; border: 1px solid #eee;">
-            <label style="display: block; margin-bottom: 10px; font-weight: bold; border-left: 4px solid var(--accent-color); padding-left: 10px;">[수학] 바로잡고 싶은 부분 *</label>
-            <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; color: #555;">
-                <label><input type="checkbox" name="math_issue" value="눈팅학습"> '눈팅' 학습 (개념-적용 괴리)</label>
-                <label><input type="checkbox" name="math_issue" value="심화기피"> 심화/킬러 문항 기피</label>
-                <label><input type="checkbox" name="math_issue" value="연산실수"> 고질적인 연산/풀이 실수</label>
-                <label><input type="checkbox" name="math_issue" value="오답관리"> 형식적인 오답 관리</label>
-                <label><input type="checkbox" name="math_issue" value="기초결손"> 이전 과정의 구멍 (결손)</label>
-                <label><input type="checkbox" name="math_issue" value="진도불안"> 진도 강박과 막연한 불안</label>
-            </div>
-        </div>
-
-        <!-- 과목별 애로사항: 국어/탐구/밸런스 -->
-        <div style="margin-bottom: 25px;">
-            <label style="display: block; margin-bottom: 10px; font-weight: bold; border-left: 4px solid var(--accent-color); padding-left: 10px;">[국어·탐구·학습밸런스] 바로잡고 싶은 부분</label>
-            <div style="display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; color: #555;">
-                <label><input type="checkbox" name="general_issue" value="국어문해력"> 국어 문해력 및 시간 부족</label>
-                <label><input type="checkbox" name="general_issue" value="탐구방치"> 탐구 과목(사탐/과탐) 방치</label>
-                <label><input type="checkbox" name="general_issue" value="밸런스붕괴"> 주객전도형 학습 (밸런스 붕괴)</label>
-                <label><input type="checkbox" name="general_issue" value="양치기"> 깊이 없는 양치기식 공부</label>
-            </div>
-        </div>
-
-        <!-- 상담 예약 날짜 및 시간 -->
-        <div style="margin-bottom: 25px; border: 1px solid #eee; padding: 20px; border-radius: 12px;">
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px; font-weight: bold;">방문 상담 희망 날짜</label>
-                <input type="date" name="consult_date" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            </div>
-            <div>
-                <label style="display: block; margin-bottom: 5px; font-weight: bold;">방문 상담 시간</label>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
-                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
-                        <input type="radio" name="consult_time" value="10:00" required> 10:00
-                    </label>
-                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
-                        <input type="radio" name="consult_time" value="11:00"> 11:00
-                    </label>
-                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
-                        <input type="radio" name="consult_time" value="13:30"> 13:30
-                    </label>
-                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
-                        <input type="radio" name="consult_time" value="14:30"> 14:30
-                    </label>
-                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
-                        <input type="radio" name="consult_time" value="20:00"> 20:00
-                    </label>
-                    <label style="font-size: 0.9rem; border: 1px solid #ddd; padding: 8px; text-align: center; border-radius: 6px; cursor: pointer;">
-                        <input type="radio" name="consult_time" value="21:00"> 21:00
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 20px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold;">문의 및 건의사항 (추가 고민사항)</label>
-            <textarea name="message" rows="4" style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" placeholder="기타 궁금하신 점이나 학생의 특이사항을 자유롭게 적어주세요."></textarea>
-        </div>
-
-        <!-- 개인정보 동의 -->
-        <div style="margin-bottom: 25px; font-size: 0.85rem; color: #666; border-top: 1px solid #eee; pt: 15px;">
-            <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
-                <input type="checkbox" name="privacy_agree" required style="margin-top: 3px;">
-                <span>[필수] 개인정보 수집 및 이용에 동의합니다. (상담 예약 및 학원 안내 서비스 제공 목적)</span>
-            </label>
-        </div>
-
-        <button type="submit" id="submit-btn" style="width: 100%; padding: 18px; background-color: var(--primary-color); color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; transition: background 0.3s;">사전 예약 신청하기</button>
-        
-        <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 15px;">
-            신청 후 담당 선생님이 순차적으로 확인 전화를 드립니다.
-        </p>
-    </form>
-</div>
-
-<script>
-    const form = document.getElementById('summer-school-form');
-    
-    // ⚠️ 매우 중요: 아래 "" 사이에 3단계에서 만들 '구글 웹 앱 URL'을 나중에 꼭 넣어야 합니다!
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwNTv1Nth8xt0AK9P6ataCtTnnwbcYX5R78bspS5MD_gLDtkQSHnnyM3Of4VEn9xHGe/exec";
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        const btn = document.getElementById('submit-btn');
-        btn.disabled = true;
-        btn.innerText = "제출 중입니다...";
-
-        fetch(scriptURL, { method: 'POST', body: new URLSearchParams(new FormData(form)) })
-            .then(response => {
-                alert('사전 예약이 성공적으로 접수되었습니다. 감사합니다!');
-                form.reset(); 
-                btn.disabled = false;
-                btn.innerText = "신청서 제출하기";
-            })
-            .catch(error => {
-                alert('전송 중 오류가 발생했습니다. 다시 시도해 주세요.');
-                console.error('Error!', error.message);
-                btn.disabled = false;
-                btn.innerText = "신청서 제출하기";
-            });
-    });
-</script>
         </div>
     </div>
 
     <script>
-        // 모달 제어 스크립트
-        const modal = document.getElementById('applyModal');
+        /* ── 요일 표시 + 시간 슬롯 전환 ── */
+        const DAYS = ['일', '월', '화', '수', '목', '금', '토'];
+
+        function updateDayOfWeek() {
+            const dateInput = document.getElementById('consult_date');
+            const display   = document.getElementById('day-of-week-display');
+            const wdSlot    = document.getElementById('time-slots-weekday');
+            const satSlot   = document.getElementById('time-slots-saturday');
+            const sunSlot   = document.getElementById('time-slots-sunday');
+
+            // 모든 라디오 초기화
+            document.querySelectorAll('input[name="consult_time"]').forEach(r => r.checked = false);
+
+            if (!dateInput.value) {
+                display.textContent = '';
+                wdSlot.style.display = 'block';
+                satSlot.style.display = 'none';
+                sunSlot.style.display = 'none';
+                return;
+            }
+
+            const [y, m, d] = dateInput.value.split('-').map(Number);
+            const date = new Date(y, m - 1, d);
+            const day  = date.getDay(); // 0=일, 6=토
+
+            display.textContent = `(${DAYS[day]})`;
+            display.style.color = day === 0 ? '#d32f2f' : day === 6 ? '#1565c0' : '#1a237e';
+
+            wdSlot.style.display  = (day >= 1 && day <= 5) ? 'block' : 'none';
+            satSlot.style.display = (day === 6)            ? 'block' : 'none';
+            sunSlot.style.display = (day === 0)            ? 'block' : 'none';
+        }
+
+        /* ── 폼 제출 ── */
+        const form = document.getElementById('summer-school-form');
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwNTv1Nth8xt0AK9P6ataCtTnnwbcYX5R78bspS5MD_gLDtkQSHnnyM3Of4VEn9xHGe/exec";
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true;
+            btn.innerText = "제출 중입니다...";
+
+            fetch(scriptURL, { method: 'POST', body: new URLSearchParams(new FormData(form)) })
+                .then(() => {
+                    alert('사전 예약이 성공적으로 접수되었습니다. 감사합니다!');
+                    form.reset();
+                    document.getElementById('day-of-week-display').textContent = '';
+                    document.getElementById('time-slots-weekday').style.display = 'block';
+                    document.getElementById('time-slots-saturday').style.display = 'none';
+                    document.getElementById('time-slots-sunday').style.display = 'none';
+                    btn.disabled = false;
+                    btn.innerText = "사전 예약 신청하기";
+                })
+                .catch(error => {
+                    alert('전송 중 오류가 발생했습니다. 다시 시도해 주세요.');
+                    console.error('Error!', error.message);
+                    btn.disabled = false;
+                    btn.innerText = "사전 예약 신청하기";
+                });
+        });
+
+        /* ── 모달 제어 ── */
+        const modal    = document.getElementById('applyModal');
         const openBtns = document.querySelectorAll('.open-modal-btn');
         const closeBtn = document.querySelector('.close-modal');
 
-        // 모든 '사전 예약 문의하기' 버튼에 클릭 이벤트 추가
-        openBtns.forEach(btn => {
-            btn.onclick = () => modal.classList.add('active');
-        });
-
-        // 닫기 버튼 클릭 시
+        openBtns.forEach(btn => { btn.onclick = () => modal.classList.add('active'); });
         closeBtn.onclick = () => modal.classList.remove('active');
-        
-        // 모달 바깥 영역 클릭 시 닫기
-        window.onclick = (event) => {
-            if (event.target == modal) {
-                modal.classList.remove('active');
-            }
-        }
-    </script>
-</body>
-</html>     .catch(error => {
-                alert('전송 중 오류가 발생했습니다. 다시 시도해 주세요.');
-                console.error('Error!', error.message);
-                btn.disabled = false;
-                btn.innerText = "신청서 제출하기";
-            });
-    });
-</script>
-        </div>
-    </div>
-
-    <script>
-        // 모달 제어 스크립트
-        const modal = document.getElementById('applyModal');
-        const openBtns = document.querySelectorAll('.open-modal-btn');
-        const closeBtn = document.querySelector('.close-modal');
-
-        // 모든 '사전 예약 문의하기' 버튼에 클릭 이벤트 추가
-        openBtns.forEach(btn => {
-            btn.onclick = () => modal.classList.add('active');
-        });
-
-        // 닫기 버튼 클릭 시
-        closeBtn.onclick = () => modal.classList.remove('active');
-        
-        // 모달 바깥 영역 클릭 시 닫기
-        window.onclick = (event) => {
-            if (event.target == modal) {
-                modal.classList.remove('active');
-            }
-        }
+        window.onclick = (event) => { if (event.target == modal) modal.classList.remove('active'); };
     </script>
 </body>
 </html>
