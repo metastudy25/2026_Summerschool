@@ -821,6 +821,12 @@
         const form = document.getElementById('summer-school-form');
         const scriptURL = "https://script.google.com/macros/s/AKfycbwNTv1Nth8xt0AK9P6ataCtTnnwbcYX5R78bspS5MD_gLDtkQSHnnyM3Of4VEn9xHGe/exec";
 
+        // 체크박스 다중선택 값을 쉼표로 합쳐서 반환
+        function getCheckedValues(name) {
+            return Array.from(document.querySelectorAll('input[name="' + name + '"]:checked'))
+                        .map(el => el.value).join(', ');
+        }
+
         form.addEventListener('submit', e => {
             e.preventDefault();
 
@@ -831,7 +837,24 @@
             btn.disabled = true;
             btn.innerText = "제출 중입니다...";
 
-            fetch(scriptURL, { method: 'POST', body: new URLSearchParams(new FormData(form)) })
+            // 모든 필드를 명시적으로 수집 (체크박스 다중값 포함)
+            const payload = new URLSearchParams({
+                student_name:   form.student_name.value.trim(),
+                school_name:    form.school_name.value.trim(),
+                grade:          form.grade.value,
+                parent_phone:   form.parent_phone.value.trim(),
+                student_phone:  form.student_phone.value.trim(),
+                focus_subject:  getCheckedValues('focus_subject'),
+                improvement:    getCheckedValues('improvement'),
+                english_issue:  getCheckedValues('english_issue'),
+                math_issue:     getCheckedValues('math_issue'),
+                general_issue:  getCheckedValues('general_issue'),
+                consult_date:   form.consult_date.value,
+                consult_time:   (document.querySelector('input[name="consult_time"]:checked') || {value:''}).value,
+                message:        form.message.value.trim(),
+            });
+
+            fetch(scriptURL, { method: 'POST', body: payload })
                 .then(() => {
                     alert('사전 예약이 성공적으로 접수되었습니다. 감사합니다!');
                     form.reset();
